@@ -3,14 +3,15 @@ import os.path as path
 
 class objeto():
 	def menu(self):
-		print "Bienvenido"
+		print "BIENVENIDO \n"
 		ver = 0
 		alistar = 1
 		salir = 2
 		print "1. Agregar \n"
 		print "2. Mostrar \n"
-		print "3. Salir"
-		menu = int(raw_input("que opcion quieres:"))
+		print "3. salir \n"
+		menu = int(raw_input("Que opcion quieres:"))
+		print "\n"
 		return menu
 		
 	def entra(self, menu):
@@ -52,14 +53,20 @@ class objeto():
 
 data = objeto()
 
-menu = data.menu()
+
+
+
 
 def mein():
+	menu = data.menu()
 	if menu == 1:
 		data1 = data.entra(menu)
 		procesa1 = data.procesa(data1)
 	if menu == 2:
 		data.mostrar()
+
+	if menu == 3:
+		pass
 
 			
 

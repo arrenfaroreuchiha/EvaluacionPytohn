@@ -59,6 +59,7 @@ class objeto():
         if cedula > 1:
             archivo = open("texto2.txt", "r")
             i = 0;
+            masEmpleados = []
             for line in archivo.readlines():
                 array = line.split(',')
                 # print array
@@ -69,13 +70,14 @@ class objeto():
                 # print "Esta es la cedula ->", cedula
                 if cedula == arrayCedula:
                     nombre = str(raw_input("Nombre:"))
+                    # newCedula = str(cedula)
 
-                    datos = [cedula, " , ", nombre," , ",array[2]," , ", array[3]," , ", array[4]," , ", array[5] , '\n']
-                    masEmpleados[i] = datos
-                    i += 1
+                    datos = [arrayCedula, " , ", nombre," , ",array[2]," , ", array[3]," , ", array[4]," , ", array[5] , '\n']
+                    masEmpleados.append(datos)
+                    # i += 1
                 else:
-                    masEmpleados[i] = array
-                    i += 1
+                    masEmpleados.append(array)
+                    # i += 1
 
             archivo = open("texto2.txt", "w+")
             finalArchivo = archivo.tell()

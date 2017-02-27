@@ -1,1 +1,2 @@
-eduardo , sanchez , 24 , 12 , 1
+1090461441 , sergio andres , sanchez rincon , 24 , 10 , 1
+1090461268 , gustavo eduardo  , sanchez rincon , 24 , 12 , 1

@@ -1,3 +1,1 @@
-eduardo , sanchez , 24 , 4
-edurdo , rincon , 24 , 4
-aaa , aaa , 24 , 4 , 1
+1090461268 , eduardo ,  sanchez  ,  24  ,  12  ,  1

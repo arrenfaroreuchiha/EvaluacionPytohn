@@ -10,6 +10,8 @@ class objeto():
         print "3. Editar \n"
         print "4. Salir \n"
         menu = int(raw_input("Que opcion quieres:"))
+        while  menu > 4 or menu == 0:
+            menu = int(raw_input("Por favor marque como se le indica arriba:"))
         print "\n"
         return menu
         
@@ -56,91 +58,110 @@ class objeto():
 
     def editar(self):
         cedula = int(raw_input("Numero De Cedula:"))
+        archivo = open("texto2.txt", "r")
 
-        if cedula > 1:
+        for line in archivo.readlines():
+            array = line.split(',')
+            arrayCedula = array[0]
+            arrayCedula = int(arrayCedula)
+
+            if cedula == arrayCedula:
+                c = arrayCedula
+                archivo.close()
+                break
+            else:
+                c = 0
+
+        if c > 1:
             archivo = open("texto2.txt", "r")
             i = 0;
             masEmpleados = []
             for line in archivo.readlines():
                 array = line.split(',')
-                # print array
-
-                if array != "['\n']":
-                    arrayCedula = array[0]
-                    # print arrayCedula
-                    #Esta es la cedula del array
-                    arrayCedula = int(arrayCedula)
-                    # print type(arrayCedula)
-
-                    if cedula == arrayCedula:
-                        print "\n"
-                        print "Que quiere modificar:"
-                        print "Nombre = 1."
-                        print "Apellido = 2."
-                        print "Edad = 3."
-                        print "Codigo = 4."
-                        print "\n"
-                        mini = int(raw_input("Que quieres modificar:"))
-                        while mini == 0 or mini > 5:
-                            mini = int(raw_input("Por favor marque como se le indica arriba:"))
-                        
-                        if mini == 1:
-                            nombre = str(raw_input("Nombre:"))
-                            newCedula = str(array[0])
-                            datos = [newCedula, " , ", nombre," , ",array[2]," , ", array[3]," , ", array[4]," , ", array[5]]
-                            masEmpleados.append(datos)
-                            print "\n"
-                            print "Se modifico el nombre de la persona."
-                            print "\n"
-                        
-                        if mini == 2:
-                            apellido = str(raw_input("Apellido:"))
-                            newCedula = str(array[0])
-                            datos = [newCedula, " , ", array[1]," , ",apellido," , ", array[3]," , ", array[4]," , ", array[5]]
-                            masEmpleados.append(datos)
-                            print "\n"
-                            print "Se modifico el apellido de la persona."
-                            print "\n"
-
-                        if mini == 3:
-                            Edad= str(raw_input("Edad:"))
-                            newCedula = str(array[0])
-                            datos = [newCedula, " , ", array[1]," , ",array[2]," , ", edad," , ", array[4]," , ", array[5]]
-                            masEmpleados.append(datos)
-                            print "\n"
-                            print "Se modifico la edad de la persona."
-                            print "\n"
-
-                        if mini == 4:
-                            codigo = str(raw_input("Codigo:"))
-                            newCedula = str(array[0])
-                            datos = [newCedula, " , ", array[1]," , ",array[2]," , ", array[3]," , ", codigo," , ", array[5]]
-                            masEmpleados.append(datos)
-                            print "\n"
-                            print "Se modifico el codigo de la persona."
-                            print "\n"
-                            
-                    else:
-                        # masEmpleados.append(array)
-                        datos = [array[0], " , ", array[1]," , ",array[2]," , ", array[3]," , ", array[4]," , ", array[5], "\n"]
+                arrayCedula = array[0]
+                arrayCedula = int(arrayCedula)
+                if cedula == arrayCedula:
+                    print "paso cedula"
+                    print "\n"
+                    print "Que quiere modificar:"
+                    print "Nombre = 1."
+                    print "Apellido = 2."
+                    print "Edad = 3."
+                    print "Codigo = 4."
+                    print "\n"
+                    mini = int(raw_input("Que quieres modificar:"))
+                    while mini == 0 or mini > 4:
+                        mini = int(raw_input("Por favor marque como se le indica arriba:"))
+                    
+                    if mini == 1:
+                        nombre = str(raw_input("Nombre:"))
+                        newCedula = str(array[0])
+                        datos = [newCedula, " , ", nombre," , ",array[2]," , ", array[3]," , ", array[4]," , ", array[5]]
                         masEmpleados.append(datos)
+                        print "\n"
+                        print "Se modifico el nombre de la persona."
+                        print "\n"
+                        #return masEmpleados
+                    
+                    if mini == 2:
+                        apellido = str(raw_input("Apellido:"))
+                        newCedula = str(array[0])
+                        datos = [newCedula, " , ", array[1]," , ",apellido," , ", array[3]," , ", array[4]," , ", array[5]]
+                        masEmpleados.append(datos)
+                        print "\n"
+                        print "Se modifico el apellido de la persona."
+                        print "\n"
+
+                    if mini == 3:
+                        edad= str(raw_input("Edad:"))
+                        newCedula = str(array[0])
+                        datos = [newCedula, " , ", array[1]," , ",array[2]," , ", edad," , ", array[4]," , ", array[5]]
+                        masEmpleados.append(datos)
+                        print "\n"
+                        print "Se modifico la edad de la persona."
+                        print "\n"
+
+                    if mini == 4:
+                        codigo = str(raw_input("Codigo:"))
+                        newCedula = str(array[0])
+                        datos = [newCedula, " , ", array[1]," , ",array[2]," , ", array[3]," , ", codigo," , ", array[5]]
+                        masEmpleados.append(datos)
+                        #return masEmpleados
+                        print "\n"
+                        print "Se modifico el codigo de la persona."
+                        print "\n"                        
+                else:
+                    datos = [array[0], " , ", array[1]," , ",array[2]," , ", array[3]," , ", array[4]," , ", array[5]]
+                    masEmpleados.append(datos)          
         else:
             print "No exixte ese numero de cedula."
             print "\n"
-        print masEmpleados
-        file = open("texto2.txt", "w+")
-        for datos in masEmpleados:
-            finalArchivo = file.tell()
-            file.seek(finalArchivo)
-            file.writelines(datos)
-            file.seek(finalArchivo)
+      
+    
+        if c > 1:
+            c = 0
+            for datos in masEmpleados: 
+                if c != 1:
+                    file = open("texto2.txt", "w")
+                    finalArchivo = file.tell()
+                    file.seek(finalArchivo)
+                    file.writelines(datos)
+                    file.seek(finalArchivo)
+                    c = 1
+                else:
+                    fali = open("texto2.txt", "a")
+                    finalArchivo = fali.tell()
+                    fali.seek(finalArchivo)
+                    fali.writelines(datos)
+                    fali.seek(finalArchivo)
 
+                
         menu = data.menu()
         data.opcciones(menu)
 
 
 
-    def opcciones(self, menu):
+    def opcciones(self, menu):           
         if menu == 1:
             data1 = data.entra(menu)
             procesa1 = data.procesa(data1)

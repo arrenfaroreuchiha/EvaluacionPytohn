@@ -1,0 +1,4 @@
+1090461268 , eduardo , sanchez , 24 , 12 , 1 
+1090461441 , andres , sanchez , 24 , 12 , 0
+1090461444 , johnsi , serrano , 24 , 15 , 0
+1090461266 , gustavo , sanhez , 20 , 10 , 1

@@ -43,7 +43,7 @@ class objeto():
             while estado > 1:
                 estado = int(raw_input("por favor marque como se le indico arriba necio:"))
             estado = str(estado)
-            datos = [cedula, " , ", nombre," , ",apellido," , ", edad," , ", codigo," , ", estado," , ", "\n"]
+            datos = [cedula, " , ", nombre," , ",apellido," , ", edad," , ", codigo," , ", estado, "\n"]
             archivo.writelines(datos)
             archivo.seek(finalArchivo)
 
@@ -53,39 +53,81 @@ class objeto():
         # print newContent
 
     def mostrar(self):
+        total = []
+        empleaActivo = []
+        empleaInactivo = []
         archivo = open("texto2.txt", "r")
-        vector = []
-        # int(i)
         for line in archivo.readlines():
             base = line.split(',')
             activo = base[5]
-            vector.append(activo)
-            numero = vector
             cedula = base[0]
             nombre = base[1]
             apellido = base[2]
             edad = base[3]
             codigo = base[4]
-            print "Estos son datos de los empleados"
-            print "\n"
-            print "Cedula:", cedula 
-            print "\n"
-            print "Nombre:", nombre
-            print "\n"
-            print "Apellido:", apellido
-            print "\n"
-            print "Edad:", edad
-            print "\n"
-            print "Codigo:", codigo
-            print "\n"
-            print "Activo:", activo
-            print "_______________________________________________"
 
-        print "Aqui esta el vector", numero
+            activo = int(activo)
+            if activo == 1:
+                array = [cedula, nombre, apellido, edad, codigo]
+                empleaActivo.append(array)
+                
+            else:
+                array = [cedula, nombre, apellido, edad, codigo]
+                empleaInactivo.append(array)
+                
+        for x in empleaActivo:
+            print ".ACTIVO."
+            print "\n"
+            print "Cedula:", x[0] 
+            print "\n"
+            print "Nombre:", x[1]
+            print "\n"
+            print "Apellido:", x[2]
+            print "\n"
+            print "Edad:", x[3]
+            print "\n"
+            print "Codigo:", x[4]
+            print "\n"
+
+        print "_____________________________"
+        print "\n"
+        for x in empleaInactivo:
+            print ".INACTIVO."
+            print "\n"
+            print "Cedula:", x[0] 
+            print "\n"
+            print "Nombre:", x[1]
+            print "\n"
+            print "Apellido:", x[2]
+            print "\n"
+            print "Edad:", x[3]
+            print "\n"
+            print "Codigo:", x[4]
+            print "\n"
+
+
         menu = data.menu()
         data.opcciones(menu)
 
     def editar(self):
+        archivo1 = open("texto2.txt", "r")
+        archivo = open("texto2.txt", "r")
+        print "Estos son los empleados que existen."
+        print "\n"
+        
+        for line in archivo1.readlines():
+            array1 = line.split(',')
+            base = array1[0]
+            cedula1 = array1[0]
+            nombre = array1[1]
+            apellido = array1[2]
+            edad = array1[3]
+            codigo = array1[4]
+            print "Cedula", cedula1 , "Nombre:", nombre , "Apellido:", apellido , "Edad:", edad , "Codigo", codigo 
+            print "\n"
+
+        print "Inglesa el numero de cedula para editar datos del empleado."
+        print "\n"
         cedula = int(raw_input("Numero De Cedula:"))
         archivo = open("texto2.txt", "r")
 
@@ -189,11 +231,10 @@ class objeto():
         data.opcciones(menu)
 
     def eliminar(self):
-        print "Escriba el numero de cedula del empleado que quiera eliminar."
-        print "\n"
+        contador = 0
         archivo1 = open("texto2.txt", "r")
         archivo = open("texto2.txt", "r")
-        print "Estos son los empleados que hay"
+        print "Estos son los empleados que existen"
         print "\n"
         
         for line in archivo1.readlines():
@@ -208,11 +249,9 @@ class objeto():
             print "\n"
 
             
-
+        print "Escriba el numero de cedula del empleado que quiera eliminar."
+        print "\n"
         cedula = int(raw_input("Cedula:"))
-        print "\n"
-        print "_______________________________________________________________________________________________"
-        print "\n"
         for line in archivo.readlines():
             array = line.split(',')
             arrayCedula = array[0]
@@ -223,52 +262,83 @@ class objeto():
                 archivo.close()
                 break
             else:
-                c = 0
-
+                c = 0        
+                
         if c > 1:
-            archivo = open("texto2.txt", "r")
-            i = 0;
-            masEmpleados = []
-            for line in archivo.readlines():
-                array = line.split(',')
-                arrayCedula = array[0]
-                arrayCedula = int(arrayCedula)
-                if cedula == arrayCedula:
-                    base = array[0]
-                    cedula1 = array[0]
-                    nombre = array[1]
-                    apellido = array[2]
-                    edad = array[3]
-                    codigo = array1[4]
-                    print "Cedula:", cedula1 , "Nombre:", nombre , "Apellido:", apellido , "Edad:", edad , "Codigo", codigo 
-                    print "\n"
-                    print "________________________________________________________________________________________________"
-                    print "\n"
-                    print "Si deseas eliminar este empleado marque 1 si no marque 0."
-                    print "\n"
-                    negar = int(raw_input("Deseas eliminar este empleado:"))
-                    print ("\n")
-                    while negar > 1:
-                        negar = int(raw_input("Idiota marque bien:"))
-                        print "\n"
-                    
-                            
-                    if negar == 1:
-                        negar1 = int(raw_input("Esta completamente seguro que quiere eliminarlo:"))
-                        print "_____________________________________________________________"
-                        print "\n"
-                        if negar1 == 1:
-                            print "john es muy lok y estoy mejorando papito......"
-                            
-                        else:
-                            break
-                    else:
-                        break
+            print "\n"
+            print "_______________________________________________________________________________________________"
+            print "\n"
+            print "Si deseas eliminar este empleado marque 1 si no marque 0."
+            print "\n"
+            negar = int(raw_input("Deseas eliminar este empleado:"))
+            print ("\n")
+            while negar > 1:
+                negar = int(raw_input("Idiota marque bien:"))
+                print "\n"
 
+            if negar == 1:
+                negar1 = int(raw_input("Esta completamente seguro que quiere eliminarlo:"))
+                print "_____________________________________________________________"
+                print "\n"
+                while negar1 > 1:
+                    negar1 = int(raw_input("Idiota marque bien:"))
+                    print "\n"
+                if negar1 == 1:
+                    archivo = open("texto2.txt", "r")
+                    i = 0;
+                    masEmpleados = []
+                    for line in archivo.readlines():
+                        contador = contador + 1
+                        array = line.split(',')
+                        arrayCedula = array[0]
+                        arrayCedula = int(arrayCedula)
+                        if cedula == arrayCedula:
+                            base = array[0]
+                            cedula1 = array[0]
+                            nombre = array[1]
+                            apellido = array[2]
+                            edad = array[3]
+                            codigo = array1[4]
+                            print "Cedula:", cedula1 , "Nombre:", nombre , "Apellido:", apellido , "Edad:", edad , "Codigo", codigo 
+                            print "\n"
+                            print "________________________________________________________________________________________________"
+                            print "\n"
+                        else:
+                            datos = [array[0], " , ", array[1]," , ",array[2]," , ", array[3]," , ", array[4]," , ", array[5]]
+                            masEmpleados.append(datos)
+
+                else:
+                    pass
+            else:
+                pass
         else:
             print "No exixte ese numero de cedula."
             print "\n"
 
+        if contador > 0:
+            if c > 1 and negar1 == 1:
+                c = 0
+                for datos in masEmpleados: 
+                    if c != 1:
+                        file = open("texto2.txt", "w")
+                        finalArchivo = file.tell()
+                        file.seek(finalArchivo)
+                        file.writelines(datos)
+                        file.seek(finalArchivo)
+                        c = 1
+                    else:
+                        fali = open("texto2.txt", "a")
+                        finalArchivo = fali.tell()
+                        fali.seek(finalArchivo)
+                        fali.writelines(datos)
+                        fali.seek(finalArchivo)
+        else:
+            print "_______________________________"
+            print "\n"
+            print "No se elimino ningun empleado."
+            print "\n"
+            print "_______________________________"
+            pass
         menu = data.menu()
         data.opcciones(menu)
 
